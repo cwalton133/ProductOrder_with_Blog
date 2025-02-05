@@ -1,0 +1,41 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Register - User Registration App{% endblock %}
+
+{% block content %}
+<h2>Register</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password1" id="password1" required>
+    </div>
+
+    <div>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="password2" id="password2" required>
+    </div>
+
+    <button type="submit">Register</button>
+</form>
+
+<p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+{% endblock %}
