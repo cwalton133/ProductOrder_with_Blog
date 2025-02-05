@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - Product Details</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Link to your CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>{{ product.name }}</h1>
+
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        <p><strong>Price:</strong> ${{ product.price }}</p>
+        <p><strong>Stock:</strong> {{ product.stock }}</p>
+
+        <div class="actions">
+            <a href="{% url 'product_update' product.pk %}" class="btn btn-warning">Edit</a>
+            <form action="{% url 'product_delete' product.pk %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            <a href="{% url 'product_list' %}" class="btn btn-primary">Back to Product List</a>
+        </div>
+    </div>
+</body>
+</html>

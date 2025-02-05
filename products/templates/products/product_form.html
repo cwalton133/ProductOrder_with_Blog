@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if product %}Edit {{ product.name }}{% else %}Add New Product{% endif %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Link to your CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>{% if product %}Edit {{ product.name }}{% else %}Add New Product{% endif %}</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name" value="{{ product.name|default:'' }}" required>
+                {{ form.name.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required>{{ product.description|default:'' }}</textarea>
+                {{ form.description.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01" value="{{ product.price|default:'' }}" required>
+                {{ form.price.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="stock">Stock:</label>
+                <input type="number" id="stock" name="stock" value="{{ product.stock|default:'' }}" required>
+                {{ form.stock.errors }}
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">{% if product %}Update{% else %}Create{% endif %}</button>
+            </div>
+        </form>
+
+        <a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+</body>
+</html>
