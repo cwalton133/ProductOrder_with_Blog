@@ -1,0 +1,17 @@
+{% extends 'orders/base.html' %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+    <h1>My Orders</h1>
+    <ul>
+        {% for order in orders %}
+            <li>
+                <a href="{% url 'view_order' order.id %}">
+                    Order #{{ order.id }} - Total: ${{ order.total_price }}
+                </a> ({{ order.created_at }})
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_order' %}">Create New Order</a>
+{% endblock %}
