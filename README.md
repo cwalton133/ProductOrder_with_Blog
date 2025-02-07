@@ -1,108 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart  with a Blog Application by Charles Walton</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
-        h1, h2 { color: #333; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        table, th, td { border: 1px solid #ddd; }
-        th, td { padding: 10px; text-align: left; }
-        th { background: #f4f4f4; }
-    </style>
-</head>
-<body>
-    <h1>Shopping Cart with a Blog Application</h1>
-    
-    <h2>Overview</h2>
-    <p>This is a Django-based Shopping Cart application that allows login users to browse products, add items to their cart, and proceed with a checkout process.</p>
-    
-    <h2>Features</h2>
-    <ul>
-        <li>User authentication (Login/Signup)</li>
-        <li>Product listing and details</li>
-        <li>Add to cart functionality</li>
-        <li>Update and remove items from cart</li>
-        <li>Checkout process with order summary</li>
-        <li>Admin panel for product management</li>
-    </ul>
-    
-    <h2>Technologies Used</h2>
-    <ul>
-        <li>Django</li>
-        <li>SQLite/PostgreSQL (Database)</li>
-        <li>Bootstrap (Frontend)</li>
-    </ul>
-    
-    <h2>Installation</h2>
-    <ol>
-        <li>Clone the repository:
-            <pre><code>git clone https://github.com/cwalton133/ProductOrder_with_Blog.git
-cd shopping-cart</code></pre>
-        </li>
-        <li>Create a virtual environment and activate it:
-            <pre><code>python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`</code></pre>
-        </li>
-        <li>Install dependencies:
-            <pre><code>pip install -r requirements.txt</code></pre>
-        </li>
-        <li>Apply migrations:
-            <pre><code>python manage.py migrate</code></pre>
-        </li>
-        <li>Create a superuser:
-            <pre><code>python manage.py createsuperuser</code></pre>
-        </li>
-        <li>Run the development server:
-            <pre><code>python manage.py runserver</code></pre>
-        </li>
-        <li>Access the application at <code>http://127.0.0.1:8000/</code></li>
-    </ol>
-    
-    <h2>API Endpoints</h2>
-    <table>
-        <tr>
-            <th>Endpoint</th>
-            <th>Method</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>/api/products/</td>
-            <td>GET</td>
-            <td>List all products</td>
-        </tr>
-        <tr>
-            <td>/api/cart/</td>
-            <td>GET</td>
-            <td>View cart items</td>
-        </tr>
-        <tr>
-            <td>/api/cart/add/</td>
-            <td>POST</td>
-            <td>Add item to cart</td>
-        </tr>
-        <tr>
-            <td>/api/cart/remove/</td>
-            <td>DELETE</td>
-            <td>Remove item from cart</td>
-        </tr>
-        <tr>
-            <td>/api/checkout/</td>
-            <td>POST</td>
-            <td>Checkout process</td>
-        </tr>
-    </table>
-    
-    <h2>API End points</h2>
-    <p>The above listed API Endpoints will be added soon.</p>
-    
-    <h2>Contributing</h2>
-    <p>Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.</p>
-    
-    <h2>License</h2>
-    <p>This project is licensed under the MIT License.</p>
-</body>
-</html>
+# Products Application
+
+This is a Django-based web application that manages online products, users, orders, and blog posts. It comprises four primary applications: **Users**, **Products**, **Orders**, and **Blog**. This README provides an overview of the project, installation instructions, usage, and more.
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Features
+
+- **User Management**: 
+  - User registration, login, and profile management.
+  
+- **Product Catalog**: 
+  - Add, edit, and delete products.
+  - Categorize products and manage inventory.
+  
+- **Order Processing**: 
+  - Create and manage customer orders.
+  - Integrate payment processing (if applicable).
+  
+- **Blog**: 
+  - Create, read, update, and delete blog posts.
+  - Comment on blog posts and manage discussions.
+
+## Technologies Used
+
+- [Django](https://www.djangoproject.com/) - The PHP framework used for building the web application.
+- [Django Rest Framework](https://www.django-rest-framework.org/) - Used for building the REST API.
+- [SQLite](https://www.sqlite.org/index.html) - Default database for development.
+- [Bootstrap](https://getbootstrap.com/) - For responsive front-end design.
+ 
+## Installation
+
+### Prerequisites
+
+Ensure you have the following installed on your system:
+
+- Python 3.x
+- pip (Python package manager)
+- virtualenv (recommended)
+
+### Steps
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/cwalton133/ProductOrder_with_Blog.git
+   cd products_application
+
+
+### Create a Virtual Environment
+
+   python -m venv venv
+
+   # Activate the virtual environment:
+
+venv\Scripts\activate
+
+   # macOS/Linux:
+
+source venv/bin/activate
+
+   # Install the dependencies
+
+   pip install -r requirements.txt
+
+# Apply migrations:
+
+python manage.py migrate
+
+
+# Create a superuser (optional but recommended for admin access):
+
+
+python manage.py createsuperuser
+
+# Run the development server:
+
+python manage.py runserver
+
+Your application should now be running on http://127.0.0.1:8000/.
+
+
+Usage
+Access the application in your web browser using the following URLs:
+
+Home Page: http://127.0.0.1:8000/
+Admin Panel: http://127.0.0.1:8000/admin/ (Use the superuser credentials to log in)
+API Documentation: If using Django Rest Framework, ensure you have included the Swagger or similar API documentation.
+
+API Endpoints
+Here are some of the main API endpoints:
+
+
+User
+
+POST /api/users/ - Register a new user.
+POST /api/auth/login/ - Log in a user.
+Products
+
+GET /api/products/ - List all products.
+POST /api/products/ - Create a new product.
+Orders
+
+GET /api/orders/ - View all orders.
+POST /api/orders/ - Create a new order.
+Blog
+
+GET /api/blog/ - List all blog posts.
+POST /api/blog/ - Create a new blog post.
+Contributing
+Contributions are welcome! Please follow these steps:
+
+Fork the repository.
+Create a feature branch (git checkout -b feature/YourFeature).
+Commit your changes (git commit -m 'Add some feature').
+Push to the branch (git push origin feature/YourFeature).
+Open a pull request.
+
+Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+License
+This project is licensed under the MIT License.
+
+Contact
+For any questions or feedback, please contact:
+
+Charles Walton - cwalton1335@gmail.com
+GitHub: cwalton133
+Thank you for checking out the Products Application!
+
+
+:
+
