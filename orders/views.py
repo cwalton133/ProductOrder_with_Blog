@@ -31,3 +31,4 @@ def order_list(request):
 def view_order(request, order_id):
     order = Order.objects.get(id=order_id, user=request.user)
     return render(request, 'orders/view_order.html', {'order': order})
+

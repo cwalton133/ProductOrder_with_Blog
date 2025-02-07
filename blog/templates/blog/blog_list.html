@@ -1,23 +1,12 @@
-<h1>{{ product.name }}</h1>
-<p>{{ product.description }}</p>
-<p>Price: ${{ product.price }}</p>
+{% extends 'blog/base.html' %}
 
-<h2>Comments:</h2>
-<ul>
-    {% for comment in comments %}
-        <li><strong>{{ comment.user.username }}</strong>: {{ comment.text }} ({{ comment.created_at }})</li>
-    {% empty %}
-        <li>No comments yet.</li>
-    {% endfor %}
-</ul>
+{% block title %}Blog List{% endblock %}
 
-{% if user.is_authenticated %}
-    <h2>Add a Comment:</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit Comment</button>
-    </form>
-{% else %}
-    <p>You must be logged in to comment. <a href="{% url 'login' %}">Login here</a>.</p>
-{% endif %}
+{% block content %}
+    <h1>Blog List</h1>
+    <ul>
+        {% for blog in blogs %}
+            <li><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
